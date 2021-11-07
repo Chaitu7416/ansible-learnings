@@ -1,0 +1,10 @@
+- name: installing nginx
+  hosts: all
+  become: yes
+  become_user: root
+  tasks:
+  - name: installing nginx
+    apt: name=nginx state=latest update_cache=yes
+    when: ansible_distribution == 'Ubuntu'
+  - name: starting nginx service
+    service: name=nginx state=started

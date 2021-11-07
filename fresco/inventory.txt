@@ -1,0 +1,2 @@
+target1 ansible_host=40.83.32.80 ansible_ssh_pass=Chaitu@74166
+target2 ansible_host=20.204.22.3 ansible_ssh_pass=Chaitu@74166

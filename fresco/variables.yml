@@ -1,0 +1,7 @@
+a#file: test.yml
+---
+- hosts: all
+  vars:
+    ansible_bios_version: Fresco
+  tasks:
+    - debug: msg="Variable 'ansible_bios_version' is set to {{ ansible_bios_version }}"

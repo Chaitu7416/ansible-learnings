@@ -1,0 +1,19 @@
+{
+  "logger": {
+    "title": "Remote Sync"
+  },
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "40.86.72.160",
+  "port": "22",
+  "target": "/home/azureuser/ansible-demos-exercises",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "azureuser",
+  "keyfile": "C:\\Users\\Chaitanya Sai\\key.pem",
+  "watch": [],
+  "transport": "scp"
+}

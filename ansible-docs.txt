@@ -1,0 +1,5 @@
+sudo ansible target1 -i inventory.txt -b --become-user root -K -m apt -a "name=sudo state=latest"
+
+-b become another user
+--become-user as userid 
+-K ask for become user's password

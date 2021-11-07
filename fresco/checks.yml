@@ -1,0 +1,10 @@
+---
+- name: show return value of command module
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: creating folder
+      command: rmdir folder7
+      register: output
+    - debug:
+        msg: "the output log when creating the folders in remote machines is {{output}}"

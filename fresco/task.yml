@@ -1,0 +1,14 @@
+---
+
+- name: check registered variable for emptiness
+  hosts: all
+  tasks:
+  - name: list contents of the directory in the host
+    command: ls /home/azureuser
+    register: contents
+  - name: check dir is empty
+    debug: msg="Directory is empty"
+    when: contents.stdout == ""
+  - name: check dir has contents
+    debug: msg="Directory is not empty"
+    when: contents.stdout != ""
