@@ -1,0 +1,23 @@
+- name: play1-install the mysql on dbserver
+  hosts: db_hosts
+  become: yes
+  become_user: root
+  roles:
+    - mysql
+
+- name: play2=install the web dependencies in webvm
+  hosts: web_hosts
+  become: yes
+  become_user: root
+  roles:
+    - flask
+
+- name: running the web application
+  hosts: web_hosts
+  tasks:
+    - name: Print command
+      debug: msg="MYSQL_DATABASE_HOST={{ hostvars[groups['db_servers'][0]]['private_ip'] }} FLASK_APP=/opt/app.py nohup flask run --host=0.0.0.0 --port=80 &"
+    - name: Start Web Server
+      shell: MYSQL_DATABASE_HOST={{ hostvars[groups['db_servers'][0]]['private_ip'] }} FLASK_APP=/opt/app.py nohup flask run --host=0.0.0.0 --port=80 &
+  tags:
+    - start

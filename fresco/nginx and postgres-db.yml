@@ -1,0 +1,34 @@
+---
+#installing nginx and postgresql
+- name: install nginx and postgresql
+  hosts: localhost
+  become: yes
+  become_user: root
+  tasks:
+  - name: installing naginx server
+    apt:
+      name: nginx
+      state: latest
+      update_cache: yes
+  - name: ensure nginx is running
+    service: name=nginx state=started
+- name: install postgresql
+  hosts: localhost
+  become: yes
+  become_user: root
+  vars:
+    db_user: dbusername
+    db_name: dbname
+    db_password: dbpassword
+  tasks:
+  - name: installing postgresql
+    apt:
+      name: "{{item}}"
+      state: latest
+    with_items:
+    - postgresql
+    - postgresql-contrib
+    - libpq-dev
+    - python3-psycopg2
+  - name: starting postgres
+    service: name=postgresql state=started enabled=yes

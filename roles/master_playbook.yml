@@ -1,0 +1,6 @@
+---
+- name: my first role in ansible
+  hosts: all
+  become: true 
+  roles:
+    - sample_role

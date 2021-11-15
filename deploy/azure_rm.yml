@@ -1,0 +1,8 @@
+plugin: azure_rm
+auth_source: cli
+include_vm_resource_groups:
+  - virtual_mach
+conditional_groups:
+  all_the_hosts: true
+  db_hosts: "'sqlvm' in name"
+  web_hosts: "'webvm' in name"  

@@ -1,0 +1,33 @@
+---
+# tasks file for flask
+
+- name: install the mysql server with dependecies
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: True
+  with_items:
+    - python3-pip
+    - python3-dev
+    - python3-mysqldb
+    - python3-setuptools
+    - build-essential
+    - python3
+
+- name: Install Python Flask dependencies
+  pip:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - flask
+    - flask-mysql
+  tags:
+    - pip
+
+- name: git checkout
+  git:
+    repo: "https://github.com/Chaitu7416/simple-webapp.git"
+    dest: /opt/
+    clone: yes
+  tags:
+    - git

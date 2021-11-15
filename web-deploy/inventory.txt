@@ -1,0 +1,2 @@
+db_hosts ansible_ssh_pass=Chaitu@74166 ansible_host=13.89.56.78
+web_hosts ansible_ssh_pass=Chaitu@74166 ansible_host=20.204.1.89
